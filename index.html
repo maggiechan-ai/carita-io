@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carita — Your family's AI care manager</title>
+<meta name="description" content="Tell Carita what your parent needs. She books the doctor, orders the groceries, arranges the transport, and keeps your family in the loop.">
+<link rel="canonical" href="https://carita.io">
+<meta property="og:title" content="Carita — Your family's AI care manager">
+<meta property="og:description" content="Just tell her what your parent needs. She'll handle it. Book the doctor, order the groceries, arrange the transport — Carita manages the logistics of caring for your parent.">
+<meta property="og:url" content="https://carita.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carita — Your family's AI care manager">
+<meta name="twitter:description" content="Just tell her what your parent needs. She'll handle it.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg-primary:#FAFAF7;--bg-secondary:#F4F1EC;--bg-tertiary:#EBE7E0;--bg-white:#FFFFFF;--text-primary:#2C2A27;--text-secondary:#6B6560;--text-tertiary:#A39E99;--sage:#7C9A82;--sage-light:#D4E2D6;--sage-medium:#5B7D62;--sage-dark:#3D5842;--terra:#C4785C;--terra-light:#F0D8CC;--terra-medium:#B0654A;--sand:#C8B99A;--sand-light:#EDE6D8;--border:#EBE7E0;--border-subtle:#F4F1EC;--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;--font-body:'Inter',-apple-system,sans-serif;--font-display:'Fraunces',Georgia,serif}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);-webkit-font-smoothing:antialiased;overflow-x:hidden}.container{max-width:720px;margin:0 auto;padding:0 24px}
+.nav{padding:20px 0;display:flex;align-items:center;justify-content:space-between}.nav-logo{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--sage-dark);letter-spacing:-0.02em}.nav-badge{font-size:11px;font-weight:500;color:var(--sage-medium);background:var(--sage-light);padding:4px 10px;border-radius:20px}
+.hero{padding:80px 0 60px;text-align:center}.hero-eyebrow{font-size:13px;font-weight:500;color:var(--sage-medium);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px}.hero h1{font-family:var(--font-display);font-size:clamp(32px,5vw,46px);font-weight:500;line-height:1.15;letter-spacing:-0.02em;margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto}.hero h1 em{font-style:italic;color:var(--sage-dark)}.hero-sub{font-size:17px;line-height:1.65;color:var(--text-secondary);max-width:520px;margin:0 auto 36px}
+.hero-cta-btn{display:inline-block;height:52px;padding:0 36px;background:var(--sage-medium);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:500;font-family:var(--font-body);cursor:pointer;transition:background 0.2s,transform 0.1s;line-height:52px}.hero-cta-btn:hover{background:var(--sage-dark)}.hero-cta-btn:active{transform:scale(0.98)}
+.signup-box{max-width:440px;margin:0 auto;background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:left;display:none}.signup-box.show{display:block;animation:fadeUp 0.3s ease}.signup-box label{display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:4px}.signup-box input,.signup-box select{width:100%;height:42px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);outline:none;transition:border 0.2s;margin-bottom:14px;appearance:none;-webkit-appearance:none}.signup-box select{background:var(--bg-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A39E99' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px}.signup-box input:focus,.signup-box select:focus{border-color:var(--sage)}.signup-box input::placeholder{color:var(--text-tertiary)}.signup-box button{width:100%;height:44px;background:var(--sage-medium);color:#fff;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:500;font-family:var(--font-body);cursor:pointer;transition:background 0.2s,transform 0.1s}.signup-box button:hover{background:var(--sage-dark)}.signup-box button:active{transform:scale(0.98)}
+.signup-step{display:none}.signup-step.active{display:block}
+.step-progress{display:flex;gap:4px;margin-bottom:16px}.step-pip{height:3px;flex:1;border-radius:2px;background:var(--border)}.step-pip.filled{background:var(--sage)}
+.step-q{font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:12px;line-height:1.4}
+.option-grid{display:grid;gap:6px}.option-btn{width:100%;text-align:left;padding:12px 14px;background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);color:var(--text-primary);cursor:pointer;transition:border 0.15s,background 0.15s}.option-btn:hover{border-color:var(--sage);background:var(--sage-light)}.option-btn.selected{border-color:var(--sage-medium);background:var(--sage-light)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.hero-note{font-size:13px;color:var(--text-tertiary);text-align:center;margin-top:12px}.form-success{display:none;text-align:center;padding:20px 0}.form-success.show{display:block}.form-success p{font-size:18px;color:var(--sage-dark);font-weight:500;font-family:var(--font-display)}.form-success span{font-size:14px;color:var(--text-secondary);display:block;margin-top:6px;line-height:1.5}.signup-box.submitted{display:none}
+.divider{border:none;border-top:1px solid var(--border-subtle);margin:60px 0}.section-eyebrow{font-size:12px;font-weight:500;color:var(--text-tertiary);letter-spacing:0.06em;text-transform:uppercase;text-align:center;margin-bottom:12px}.section-title{font-family:var(--font-display);font-size:clamp(22px,3.5vw,28px);font-weight:500;text-align:center;line-height:1.3;margin-bottom:8px;letter-spacing:-0.01em}.section-sub{font-size:15px;color:var(--text-secondary);text-align:center;max-width:460px;margin:0 auto 32px;line-height:1.6}
+.phone-frame{max-width:400px;margin:0 auto;background:var(--bg-white);border-radius:var(--radius-xl);border:1px solid var(--border);padding:20px 16px;box-shadow:0 8px 40px rgba(107,101,96,0.08)}.phone-header{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--border-subtle);margin-bottom:16px}.phone-avatar{width:36px;height:36px;border-radius:50%;background:var(--sage-light);display:flex;align-items:center;justify-content:center}.phone-avatar svg{width:18px;height:18px}.phone-name{font-weight:500;font-size:14px}.phone-status{font-size:11px;color:var(--sage-medium)}
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;margin-bottom:6px;font-size:13px;line-height:1.5;animation:msgIn 0.4s ease both}.chat-msg:nth-child(1){animation-delay:0.1s}.chat-msg:nth-child(2){animation-delay:0.3s}.chat-msg:nth-child(3){animation-delay:0.6s}.chat-msg:nth-child(4){animation-delay:0.9s}.chat-msg:nth-child(5){animation-delay:1.2s}.chat-msg:nth-child(6){animation-delay:1.5s}.msg-user{margin-left:auto;background:var(--sage-light);color:var(--sage-dark);border-bottom-right-radius:4px}.msg-bot{margin-right:auto;background:var(--bg-secondary);color:var(--text-primary);border-bottom-left-radius:4px}@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:520px){.cmd-grid{grid-template-columns:1fr}}.cmd-card{background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px}.cmd-voice{font-size:14px;color:var(--sage-dark);font-style:italic;margin-bottom:6px;line-height:1.4}.cmd-result{font-size:12px;color:var(--text-secondary);line-height:1.4}
+.pain-grid{display:grid;gap:12px}.pain-card{background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start}.pain-icon{width:48px;height:48px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center}.pain-icon svg{width:22px;height:22px}.pain-before{font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:8px}.pain-after{font-size:13px;color:var(--sage-dark);line-height:1.5;font-weight:500}.pain-label{font-size:11px;font-weight:500;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:520px){.feat-grid{grid-template-columns:1fr}}.feat-card{background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px}.feat-card-primary{border:2px solid var(--sage)}.feat-name{font-weight:500;font-size:15px;margin-bottom:4px}.feat-desc{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.superpower{background:var(--sand-light);border-radius:var(--radius-lg);padding:28px 24px;margin:40px 0}.superpower-label{font-size:11px;font-weight:500;color:var(--terra-medium);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px}.superpower-title{font-family:var(--font-display);font-size:18px;font-weight:500;margin-bottom:8px;line-height:1.3}.superpower-text{font-size:14px;color:var(--text-secondary);line-height:1.65}
+.app-scroll{display:flex;gap:20px;overflow-x:auto;padding:8px 32px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}.app-scroll::-webkit-scrollbar{display:none}@media(max-width:700px){.app-scroll{justify-content:flex-start}}@media(min-width:701px){.app-scroll{justify-content:center}}.app-phone{width:195px;min-width:195px;height:422px;background:#FAFAF7;border-radius:28px;border:2px solid var(--border);overflow:hidden;scroll-snap-align:center;box-shadow:0 4px 24px rgba(107,101,96,0.07);display:flex;flex-direction:column}.app-phone-top{padding:16px 14px 0;display:flex;justify-content:center;align-items:center;flex-shrink:0;position:relative}.app-phone-notch{width:60px;height:5px;border-radius:3px;background:var(--border)}.app-phone-titlebar{padding:8px 14px 8px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}.app-phone-title{font-size:16px;font-weight:500;color:var(--text-primary);font-family:var(--font-display)}.app-burger{width:20px;height:20px;display:flex;flex-direction:column;justify-content:center;gap:3px;cursor:pointer}.app-burger span{display:block;width:16px;height:1.5px;background:var(--text-tertiary);border-radius:1px}.app-phone-content{padding:0 12px 12px;flex:1;overflow:hidden}.app-phone-tabs{display:flex;border-top:1px solid var(--border);padding:6px 0 10px;flex-shrink:0;margin-top:auto}.apt{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1px}.apt span{font-size:8px;font-weight:500;color:var(--text-tertiary)}.apt-active span{color:var(--sage-medium)}.app-card{background:var(--bg-white);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:6px}.app-alert{background:#FDF8F5;border-left:3px solid var(--terra);border-radius:0 8px 8px 0;padding:8px 10px;margin-bottom:6px}.app-pattern{background:var(--sage-light);border-radius:8px;padding:8px 10px;margin-bottom:8px}
+.step{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start}.step-num{width:32px;height:32px;border-radius:50%;background:var(--sage-light);color:var(--sage-dark);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;flex-shrink:0}.step-title{font-weight:500;font-size:15px;margin-bottom:2px}.step-desc{font-size:13px;color:var(--text-secondary);line-height:1.5}
+.quote-text{font-family:var(--font-display);font-size:20px;font-weight:400;font-style:italic;line-height:1.5;max-width:480px;margin:0 auto 8px;text-align:center}.quote-attr{font-size:13px;color:var(--text-tertiary);text-align:center}
+.final-cta{text-align:center;padding:60px 0 40px}.final-cta h2{font-family:var(--font-display);font-size:clamp(22px,3.5vw,28px);font-weight:500;line-height:1.3;margin-bottom:12px}.final-cta p{font-size:15px;color:var(--text-secondary);margin-bottom:28px}.final-cta-form{display:flex;gap:8px;justify-content:center;max-width:420px;margin:0 auto}.final-cta-form input{flex:1;height:48px;padding:0 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:15px;font-family:var(--font-body);background:var(--bg-white);outline:none}.final-cta-form input:focus{border-color:var(--sage)}.final-cta-form input::placeholder{color:var(--text-tertiary)}.final-cta-form button{height:48px;padding:0 28px;background:var(--sage-medium);color:#fff;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:500;font-family:var(--font-body);cursor:pointer;white-space:nowrap}.final-cta-form button:hover{background:var(--sage-dark)}
+.footer{padding:32px 0;border-top:1px solid var(--border-subtle);text-align:center}.footer p{font-size:12px;color:var(--text-tertiary)}.footer-logo{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--sage);margin-bottom:6px}
+@media(max-width:640px){.hero{padding:48px 0 40px}.pain-card{grid-template-columns:1fr}.pain-icon{width:40px;height:40px}.final-cta-form{flex-direction:column}.final-cta-form input,.final-cta-form button{width:100%}}
+</style>
+</head>
+<body>
+<div class="container"><nav class="nav"><div class="nav-logo">Carita</div><div class="nav-badge">Early access</div></nav></div>
+<div class="container">
+<section class="hero">
+<div class="hero-eyebrow">Meet Carita — your family's AI care manager</div>
+<h1>Just tell her what your parent needs. <em>She'll handle it.</em></h1>
+<p class="hero-sub">Book the doctor. Order the groceries. Arrange the transport. Refill the prescription. Carita manages the endless logistics of caring for your parent — so you can stop being a coordinator and go back to being family.</p>
+<button class="hero-cta-btn" id="cta-btn" onclick="startSignup()">Join the waitlist</button>
+
+<div class="signup-box" id="signup-box">
+<div class="step-progress"><div class="step-pip filled" id="pip1"></div><div class="step-pip" id="pip2"></div><div class="step-pip" id="pip3"></div><div class="step-pip" id="pip4"></div><div class="step-pip" id="pip5"></div><div class="step-pip" id="pip6"></div></div>
+
+<div class="signup-step active" id="q1">
+<div class="step-q">Who are you caring for?</div>
+<div class="option-grid">
+<button class="option-btn" onclick="answer('caring','parent','q2')">A parent</button>
+<button class="option-btn" onclick="answer('caring','in-law','q2')">A parent-in-law</button>
+<button class="option-btn" onclick="answer('caring','spouse','q2')">A spouse or partner</button>
+<button class="option-btn" onclick="answer('caring','other','q2')">Someone else</button>
+</div></div>
+
+<div class="signup-step" id="q2">
+<div class="step-q">What takes up the most of your time?</div>
+<div class="option-grid">
+<button class="option-btn" onclick="answer('challenge','logistics','q3')">Booking appointments and finding providers</button>
+<button class="option-btn" onclick="answer('challenge','coordination','q3')">Coordinating across family members</button>
+<button class="option-btn" onclick="answer('challenge','health','q3')">Tracking health changes and medication</button>
+<button class="option-btn" onclick="answer('challenge','all','q3')">All of the above</button>
+</div></div>
+
+<div class="signup-step" id="q3">
+<div class="step-q">How far do you live from the person you care for?</div>
+<div class="option-grid">
+<button class="option-btn" onclick="answer('distance','same-house','q4')">We live together</button>
+<button class="option-btn" onclick="answer('distance','under-30','q4')">Under 30 minutes away</button>
+<button class="option-btn" onclick="answer('distance','30-60','q4')">30-60 minutes away</button>
+<button class="option-btn" onclick="answer('distance','over-60','q4')">More than an hour away</button>
+</div></div>
+
+<div class="signup-step" id="q4">
+<div class="step-q">How many people help with care?</div>
+<div class="option-grid">
+<button class="option-btn" onclick="answer('helpers','just-me','q5')">Just me</button>
+<button class="option-btn" onclick="answer('helpers','2-3','q5')">2-3 family members</button>
+<button class="option-btn" onclick="answer('helpers','4+','q5')">4 or more people</button>
+<button class="option-btn" onclick="answer('helpers','paid-help','q5')">Family + paid helper or aide</button>
+</div></div>
+
+<div class="signup-step" id="q5">
+<div class="step-q">How did you hear about Carita?</div>
+<div class="option-grid">
+<button class="option-btn" onclick="answer('source','social','q6')">Social media</button>
+<button class="option-btn" onclick="answer('source','search','q6')">Google search</button>
+<button class="option-btn" onclick="answer('source','friend','q6')">A friend or family member</button>
+<button class="option-btn" onclick="answer('source','other','q6')">Other</button>
+</div></div>
+
+<div class="signup-step" id="q6">
+<div class="step-q">Last step — where should we send your invite?</div>
+<label for="signup-email" style="margin-top:8px">Email address</label>
+<input type="email" id="signup-email" placeholder="you@email.com" required>
+<button type="button" onclick="submitSignup()">Get early access</button>
+</div>
+</div>
+
+<div class="form-success" id="form-success"><p>You're on the list.</p><span>We'll reach out soon with early access to Carita.</span></div>
+<p class="hero-note">Free early access for the first 100 families</p>
+</section>
+</div>
+<hr class="divider">
+<div class="container"><section>
+<div class="section-eyebrow">Talk to Carita like you'd talk to a friend</div>
+<div class="section-title">She finds it. She books it. She tells the family.</div>
+<p class="section-sub">No app to learn. Just tell Carita what your parent needs in WhatsApp.</p>
+<div class="phone-frame">
+<div class="phone-header"><div class="phone-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="#5B7D62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><div class="phone-name">Carita</div><div class="phone-status">Online</div></div></div>
+<div class="chat-msg msg-user">Mum needs to see the eye doctor this month. Can you find one near her?</div>
+<div class="chat-msg msg-bot">Found 3 ophthalmologists near Margaret. Dr. Patel has the earliest slot — Thursday 2pm. Want me to book it?</div>
+<div class="chat-msg msg-user">Yes please. And organise a ride for her?</div>
+<div class="chat-msg msg-bot">Booked. Pickup at 1:20pm, return trip arranged. I'll remind Mum Wednesday evening. Should I let James know?</div>
+<div class="chat-msg msg-user">Yes. And she's low on blood pressure meds</div>
+<div class="chat-msg msg-bot">Her Amlodipine was last filled 26 days ago. Want me to order delivery to Mum's?</div>
+</div>
+</section></div>
+<hr class="divider">
+<div class="container"><section>
+<div class="section-title">Just say what you need</div>
+<p class="section-sub">Text or voice-note Carita. She handles the rest.</p>
+<div class="cmd-grid">
+<div class="cmd-card"><div class="cmd-voice">"Book Mum a GP appointment"</div><div class="cmd-result">Finds slots, books, arranges transport, tells the family</div></div>
+<div class="cmd-card"><div class="cmd-voice">"Order Dad's usual groceries"</div><div class="cmd-result">Places his regular order for delivery</div></div>
+<div class="cmd-card"><div class="cmd-voice">"Find a plumber, the tap is leaking"</div><div class="cmd-result">Searches, gets quotes, presents options, books</div></div>
+<div class="cmd-card"><div class="cmd-voice">"Refill Dad's heart medication"</div><div class="cmd-result">Orders from pharmacy, arranges delivery, logs it</div></div>
+<div class="cmd-card"><div class="cmd-voice">"Who visited Mum this week?"</div><div class="cmd-result">Shows every visit, call, and observation</div></div>
+<div class="cmd-card"><div class="cmd-voice">"Doctor visit Monday — prep me"</div><div class="cmd-result">Generates a summary of recent changes</div></div>
+</div>
+</section></div>
+<hr class="divider">
+<div class="container"><section>
+<div class="section-title">Sound familiar?</div>
+<p class="section-sub">Caring for a parent means a hundred small tasks with no one holding the full picture.</p>
+<div class="pain-grid">
+<div class="pain-card"><div class="pain-icon" style="background:var(--terra-light)"><svg viewBox="0 0 24 24" fill="none" stroke="#B0654A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="pain-label">Sunday night</div><div class="pain-before">You spent the whole day at Mum's. You drive home exhausted and realise you forgot to tell your brother about the new prescription.</div><div class="pain-after">With Carita: You voice-note what happened. Your brother gets a clear update automatically.</div></div></div>
+<div class="pain-card"><div class="pain-icon" style="background:var(--sage-light)"><svg viewBox="0 0 24 24" fill="none" stroke="#5B7D62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><div class="pain-label">Before the doctor</div><div class="pain-before">The doctor asks "how has she been?" and you say "fine, I think."</div><div class="pain-after">With Carita: You walk in with a one-page summary from your whole family's observations.</div></div></div>
+</div>
+</section></div>
+<hr class="divider">
+<div class="container"><section>
+<div class="section-title">Everything about your parent's care. One chat.</div>
+<div class="feat-grid">
+<div class="feat-card feat-card-primary"><div class="feat-name">Voice-first logistics</div><div class="feat-desc">Book appointments, order prescriptions, find providers — just say what you need.</div></div>
+<div class="feat-card feat-card-primary"><div class="feat-name">Family task list</div><div class="feat-desc">Every care task visible to the whole family. Who's doing what, what's pending.</div></div>
+<div class="feat-card"><div class="feat-name">Shared calendar</div><div class="feat-desc">Appointments, medication schedules, visits — one view for everyone.</div></div>
+<div class="feat-card"><div class="feat-name">Care logbook</div><div class="feat-desc">Log visits in 30 seconds. A running record the whole family can see.</div></div>
+<div class="feat-card"><div class="feat-name">Medication tracker</div><div class="feat-desc">Every medication and refill date. Reminders before they run out.</div></div>
+<div class="feat-card"><div class="feat-name">Provider memory</div><div class="feat-desc">Every doctor, pharmacy, and provider your family has used.</div></div>
+</div>
+</section></div>
+<div class="container"><div class="superpower"><div class="superpower-label">The hidden superpower</div><div class="superpower-title">The more your family uses Carita, the smarter she gets.</div><div class="superpower-text">Over time, Carita connects observations from everyone. Your sister noticed appetite changes. The helper reported napping. You noticed a repeated story. Carita sees the pattern — and flags it before it becomes a problem.</div></div></div>
+<hr class="divider">
+<div class="container">
+<div class="section-eyebrow">Your family's care HQ</div>
+<div class="section-title">The app shows the full picture.</div>
+<p class="section-sub">A shared dashboard for the whole family. See what's happening, what's next, and who's helping.</p>
+</div>
+<div class="app-scroll">
+
+<div class="app-phone"><div class="app-phone-top"><div class="app-phone-notch"></div></div><div class="app-phone-titlebar"><div class="app-phone-title">Margaret's care</div><div class="app-burger"><span></span><span></span><span></span></div></div><div class="app-phone-content">
+<div class="app-card" style="display:flex;gap:8px;align-items:center"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#D4E2D6,#C8B99A);flex-shrink:0"></div><div><div style="font-size:12px;font-weight:500">Margaret Chen, 78</div><div style="font-size:10px;color:#A39E99">Chatswood NSW</div></div></div>
+<div class="app-alert"><div style="font-size:11px;color:#8A4D37">Amlodipine refill due in 3 days</div></div>
+<div class="app-card"><div style="display:flex;gap:6px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:#7C9A82"></div><div style="font-size:11px;font-weight:500">Dr. Patel — Thu 2pm</div></div></div>
+<div class="app-card"><div style="display:flex;gap:6px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:#C8B99A"></div><div style="font-size:11px;font-weight:500">Pete — garden, Sat 9:30</div></div></div>
+</div><div class="app-phone-tabs"><div class="apt apt-active"><svg viewBox="0 0 24 24" fill="none" stroke="#5B7D62" stroke-width="2" width="14" height="14"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Home</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Calendar</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span>Log</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Health</span></div></div></div>
+
+<div class="app-phone"><div class="app-phone-top"><div class="app-phone-notch"></div></div><div class="app-phone-titlebar"><div class="app-phone-title">Calendar</div><div class="app-burger"><span></span><span></span><span></span></div></div><div class="app-phone-content">
+<div style="display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:1px;margin-bottom:8px">
+<div style="font-size:9px;color:#A39E99;padding:3px">M</div><div style="font-size:9px;color:#A39E99;padding:3px">T</div><div style="font-size:9px;color:#A39E99;padding:3px">W</div><div style="font-size:9px;color:#A39E99;padding:3px">T</div><div style="font-size:9px;color:#A39E99;padding:3px">F</div><div style="font-size:9px;color:#A39E99;padding:3px">S</div><div style="font-size:9px;color:#A39E99;padding:3px">S</div>
+<div style="font-size:10px;color:#A39E99;padding:4px">24</div><div style="font-size:10px;color:#A39E99;padding:4px">25</div><div style="font-size:10px;color:#A39E99;padding:4px">26</div><div style="font-size:10px;color:#A39E99;padding:4px">27</div><div style="font-size:10px;color:#A39E99;padding:4px">28</div><div style="font-size:10px;color:#fff;padding:4px;width:24px;height:24px;border-radius:50%;background:#5B7D62;display:flex;align-items:center;justify-content:center;margin:0 auto">29</div><div style="font-size:10px;color:#A39E99;padding:4px">30</div>
+</div>
+<div style="font-size:9px;font-weight:500;color:#A39E99;text-transform:uppercase;letter-spacing:0.5px;margin:6px 0 4px">Today</div>
+<div style="background:#fff;border-left:3px solid #7C9A82;border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:5px"><div style="font-size:11px;font-weight:500;color:#2C2A27">9:30 AM — Pete, gardener</div><div style="font-size:9px;color:#A39E99">David supervising</div></div>
+<div style="background:#fff;border-left:3px solid #C8B99A;border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:5px"><div style="font-size:11px;font-weight:500;color:#2C2A27">AM / PM — Medications</div><div style="font-size:9px;color:#A39E99">Amlodipine, Metformin</div></div>
+<div style="font-size:9px;font-weight:500;color:#A39E99;text-transform:uppercase;letter-spacing:0.5px;margin:6px 0 4px">Thursday, Apr 3</div>
+<div style="background:#fff;border-left:3px solid #7C9A82;border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:5px"><div style="font-size:11px;font-weight:500;color:#2C2A27">2:00 PM — Dr. Patel</div><div style="font-size:9px;color:#A39E99">Transport booked 1:20pm</div></div>
+</div><div class="app-phone-tabs"><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Home</span></div><div class="apt apt-active"><svg viewBox="0 0 24 24" fill="none" stroke="#5B7D62" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Calendar</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span>Log</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Health</span></div></div></div>
+
+<div class="app-phone"><div class="app-phone-top"><div class="app-phone-notch"></div></div><div class="app-phone-titlebar"><div class="app-phone-title">Care log</div><div class="app-burger"><span></span><span></span><span></span></div></div><div class="app-phone-content">
+<div class="app-pattern"><div style="font-size:10px;font-weight:500;color:#3D5842">Tiredness noted 4x this week</div></div>
+<div class="app-card"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:11px;font-weight:500">Maria</span><span style="font-size:9px;color:#A39E99">8:30 AM</span></div><div style="font-size:10px;color:#6B6560;line-height:1.3">Slept well. Ate porridge. Good spirits.</div></div>
+<div class="app-card"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:11px;font-weight:500">Sarah</span><span style="font-size:9px;color:#A39E99">Yesterday</span></div><div style="font-size:10px;color:#6B6560;line-height:1.3">Seemed tired, napped. Ate half dinner.</div></div>
+<div class="app-card"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:11px;font-weight:500">David</span><span style="font-size:9px;color:#A39E99">Yesterday</span></div><div style="font-size:10px;color:#6B6560;line-height:1.3">Called Mum. Told gardener story twice.</div></div>
+</div><div class="app-phone-tabs"><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Home</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Calendar</span></div><div class="apt apt-active"><svg viewBox="0 0 24 24" fill="none" stroke="#5B7D62" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span>Log</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Health</span></div></div></div>
+
+<div class="app-phone"><div class="app-phone-top"><div class="app-phone-notch"></div></div><div class="app-phone-titlebar"><div class="app-phone-title">Health</div><div class="app-burger"><span></span><span></span><span></span></div></div><div class="app-phone-content">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px">
+<div style="background:#D4E2D6;border-radius:8px;padding:8px 10px"><div style="font-size:9px;color:#3D5842;font-weight:500">Mood this week</div><div style="font-size:16px;font-weight:500;color:#3D5842;margin-top:2px">Good</div><div style="font-size:9px;color:#5B7D62">4 of 5 days positive</div></div>
+<div style="background:#F0D8CC;border-radius:8px;padding:8px 10px"><div style="font-size:9px;color:#8A4D37;font-weight:500">Appetite</div><div style="font-size:16px;font-weight:500;color:#8A4D37;margin-top:2px">Low</div><div style="font-size:9px;color:#B0654A">Declined over 3 days</div></div>
+</div>
+<div style="background:#fff;border:1px solid #EBE7E0;border-radius:8px;padding:8px 10px;margin-bottom:6px">
+<div style="font-size:10px;font-weight:500;color:#2C2A27;margin-bottom:6px">Medication adherence</div>
+<div style="display:flex;gap:3px;margin-bottom:4px"><div style="flex:1;height:16px;border-radius:3px;background:#D4E2D6"></div><div style="flex:1;height:16px;border-radius:3px;background:#D4E2D6"></div><div style="flex:1;height:16px;border-radius:3px;background:#D4E2D6"></div><div style="flex:1;height:16px;border-radius:3px;background:#D4E2D6"></div><div style="flex:1;height:16px;border-radius:3px;background:#F0D8CC"></div><div style="flex:1;height:16px;border-radius:3px;background:#D4E2D6"></div><div style="flex:1;height:16px;border-radius:3px;background:#EBE7E0"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:8px;color:#A39E99"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+</div>
+<div class="app-alert"><div style="font-size:10px;font-weight:500;color:#8A4D37;margin-bottom:2px">Pattern alert</div><div style="font-size:10px;color:#8A4D37;line-height:1.3">Tiredness + low appetite noted together. Flagged for Dr. Wong.</div></div>
+</div><div class="app-phone-tabs"><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Home</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Calendar</span></div><div class="apt"><svg viewBox="0 0 24 24" fill="none" stroke="#A39E99" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span>Log</span></div><div class="apt apt-active"><svg viewBox="0 0 24 24" fill="none" stroke="#5B7D62" stroke-width="2" width="14" height="14"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Health</span></div></div></div>
+
+</div>
+<hr class="divider">
+<div class="container"><section>
+<div class="section-title">Get started in 5 minutes</div>
+<p class="section-sub">No app to download. Just a quick form, then a conversation.</p>
+<div class="step"><div class="step-num">1</div><div><div class="step-title">Tell us about your parent</div><div class="step-desc">Name, address, conditions, medications. Takes 5 minutes.</div></div></div>
+<div class="step"><div class="step-num">2</div><div><div class="step-title">Say hi to Carita on WhatsApp</div><div class="step-desc">She already knows about your parent. No repeating yourself.</div></div></div>
+<div class="step"><div class="step-num">3</div><div><div class="step-title">Tell her what needs doing</div><div class="step-desc">Book an appointment. Find a cleaner. Refill a prescription.</div></div></div>
+<div class="step"><div class="step-num">4</div><div><div class="step-title">Invite your family</div><div class="step-desc">Everyone contributes, everyone stays in the loop.</div></div></div>
+</section></div>
+<hr class="divider">
+<div class="container"><section style="padding:20px 0"><p class="quote-text">"I used to spend my whole Sunday coordinating Mum's care. Now I just text Carita and it's handled by Monday morning."</p><p class="quote-attr">— What we're building toward</p></section></div>
+<hr class="divider">
+<div class="container"><section class="final-cta">
+<h2>You shouldn't need a project management degree to look after your mum.</h2>
+<p>Join the waitlist. Free early access for the first 100 families.</p>
+<button class="hero-cta-btn" onclick="document.getElementById('cta-btn').click();window.scrollTo({top:0,behavior:'smooth'})">Join the waitlist</button>
+</section></div>
+<footer class="footer"><div class="container"><div class="footer-logo">Carita</div><p>The AI care manager for families with aging parents.</p></div></footer>
+<script>
+const FORMSPREE_URL = null;
+const answers = {};
+const stepOrder = ['q1','q2','q3','q4','q5','q6'];
+
+function startSignup() {
+  document.getElementById('cta-btn').style.display = 'none';
+  document.getElementById('signup-box').classList.add('show');
+}
+
+function answer(key, value, nextStep) {
+  answers[key] = value;
+  const currentIdx = stepOrder.indexOf(nextStep) - 1;
+  document.getElementById(stepOrder[currentIdx]).classList.remove('active');
+  document.getElementById(nextStep).classList.add('active');
+  for (let i = 0; i <= stepOrder.indexOf(nextStep); i++) {
+    document.getElementById('pip' + (i + 1)).classList.add('filled');
+  }
+}
+
+function submitSignup() {
+  const email = document.getElementById('signup-email').value;
+  if (!email || !email.includes('@')) { document.getElementById('signup-email').focus(); return; }
+  answers.email = email;
+  const existing = JSON.parse(localStorage.getItem('carita_waitlist') || '[]');
+  existing.push({ ...answers, timestamp: new Date().toISOString() });
+  localStorage.setItem('carita_waitlist', JSON.stringify(existing));
+  console.log('Waitlist signup:', answers, '| Total:', existing.length);
+  if (FORMSPREE_URL) {
+    fetch(FORMSPREE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(answers) }).catch(err => console.log('Formspree error:', err));
+  }
+  document.getElementById('signup-box').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
+}
+
+function handleBottomSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('bottom-email').value;
+  const data = { email, source: 'bottom CTA' };
+  const existing = JSON.parse(localStorage.getItem('carita_waitlist') || '[]');
+  existing.push({ ...data, timestamp: new Date().toISOString() });
+  localStorage.setItem('carita_waitlist', JSON.stringify(existing));
+  if (FORMSPREE_URL) {
+    fetch(FORMSPREE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).catch(err => console.log('Formspree error:', err));
+  }
+  document.getElementById('bottom-form').style.display = 'none';
+  document.getElementById('form-success-2').classList.add('show');
+}
+</script>
+</body>
+</html>
