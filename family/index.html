@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carita — Family Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="header-content">
+        <div class="header-logo">
+          <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 3C8.477 3 4 7.477 4 13c0 3.05 1.365 5.78 3.52 7.62L6 24l4.38-1.5A10.96 10.96 0 0014 23c5.523 0 10-4.477 10-10S19.523 3 14 3z" stroke="#5B7D62" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 12.5c0-1.38 1.79-2.5 4-2.5s4 1.12 4 2.5" stroke="#5B7D62" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="10.5" cy="12" r="0.75" fill="#5B7D62"/>
+            <circle cx="17.5" cy="12" r="0.75" fill="#5B7D62"/>
+          </svg>
+          <span class="logo-text">Carita</span>
+        </div>
+        <div class="header-family" id="header-family-name">Loading...</div>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="calendar">
+        <svg class="tab-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2.5" y="3.5" width="15" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2.5 7.5h15" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M6.5 2v3M13.5 2v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="7" cy="11" r="1" fill="currentColor"/>
+          <circle cx="10" cy="11" r="1" fill="currentColor"/>
+          <circle cx="13" cy="11" r="1" fill="currentColor"/>
+        </svg>
+        <span>Coming Up</span>
+      </button>
+      <button class="tab-btn" data-tab="activity">
+        <svg class="tab-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 5h14M3 10h10M3 15h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="16" cy="14" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M16 13v1.25l.75.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Activity</span>
+      </button>
+      <button class="tab-btn" data-tab="profile">
+        <svg class="tab-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3.5 17.5c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Care Profile</span>
+      </button>
+    </nav>
+
+    <!-- Content Sections -->
+    <main class="dashboard-content">
+      <!-- Calendar Section -->
+      <section class="tab-content active" id="tab-calendar">
+        <div class="section-header">
+          <h1 class="section-title">Coming Up</h1>
+        </div>
+        <div id="calendar-list" class="card-list">
+          <!-- Skeleton loading -->
+          <div class="skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-line w40"></div></div>
+          <div class="skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-line w40"></div></div>
+          <div class="skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-line w40"></div></div>
+        </div>
+      </section>
+
+      <!-- Activity Feed Section -->
+      <section class="tab-content" id="tab-activity">
+        <div class="section-header">
+          <h1 class="section-title">Recent Activity</h1>
+        </div>
+        <div id="activity-list" class="card-list">
+          <div class="skeleton-card"><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+          <div class="skeleton-card"><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+          <div class="skeleton-card"><div class="skeleton-line w40"></div><div class="skeleton-line w80"></div></div>
+        </div>
+      </section>
+
+      <!-- Care Profile Section -->
+      <section class="tab-content" id="tab-profile">
+        <div class="section-header">
+          <h1 class="section-title" id="profile-title">Care Profile</h1>
+        </div>
+        <div id="profile-sections" class="card-list">
+          <div class="skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-line w40"></div></div>
+          <div class="skeleton-card"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-line w40"></div></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Disclaimer Footer -->
+    <footer class="dashboard-footer">
+      <p class="disclaimer">This information is maintained by your family and Carita based on your conversations. It is a coordination aid — not a medical record. Always verify medications, allergies, and health information with your parent's healthcare providers.</p>
+    </footer>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="components/calendar.js"></script>
+  <script src="components/activity.js"></script>
+  <script src="components/profile.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
