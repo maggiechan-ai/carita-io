@@ -121,7 +121,7 @@
 
   /* ---------- Dynamic parent name injection ---------- */
   function injectParentName() {
-    const name = state.data.parent_name || 'your parent';
+    const name = state.data.parent_name || 'your loved one';
     document.querySelectorAll('.parent-name').forEach(el => {
       el.textContent = name;
     });
@@ -429,7 +429,7 @@
             0: 'We need your name to continue',
             1: 'Please select your relationship',
             2: 'Please select your country',
-            3: "We need their name so we can personalise your experience",
+            3: "Please let us know what to call them",
             4: 'Please tell us where they live',
             5: 'Please select a living situation',
             6: 'Please select how long',
@@ -571,7 +571,7 @@
     const subEl = $completion.querySelector('.completion__subtitle');
     nameEl.textContent = "You're all set, " + (state.data.first_name || 'there');
     subEl.textContent = 'Head back to WhatsApp \u2014 I\'m ready to help with ' +
-      (state.data.parent_name || 'your parent\'s') + '\'s care.';
+      (state.data.parent_name || 'your loved one\'s') + '\'s care.';
 
     $completion.classList.add('active');
   }
