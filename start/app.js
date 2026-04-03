@@ -243,9 +243,34 @@
         haptic(10);
         grid.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-        state.data[key] = card.dataset.value;
+
+        /* Handle "Other" free-text input */
+        const otherInput = screen.querySelector('.other-input');
+        if (otherInput) {
+          if (card.dataset.value === 'Other') {
+            otherInput.style.display = 'block';
+            otherInput.focus();
+            state.data[key] = otherInput.value.trim() ? 'Other: ' + otherInput.value.trim() : '';
+          } else {
+            otherInput.style.display = 'none';
+            otherInput.value = '';
+            state.data[key] = card.dataset.value;
+          }
+        } else {
+          state.data[key] = card.dataset.value;
+        }
         updateContinueBtn(parseInt(screen.dataset.index, 10));
       });
+
+      /* Listen for typing in "Other" free-text input */
+      const otherInput = grid.closest('.screen').querySelector('.other-input');
+      if (otherInput) {
+        otherInput.addEventListener('input', () => {
+          const val = otherInput.value.trim();
+          state.data[key] = val ? 'Other: ' + val : '';
+          updateContinueBtn(parseInt(screen.dataset.index, 10));
+        });
+      }
     });
   }
 
