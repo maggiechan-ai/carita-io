@@ -547,7 +547,11 @@
         'Prefer': 'return=minimal,resolution=merge-duplicates',
       };
 
-      const res = await fetch(SUPABASE_URL + '/rest/v1/onboarding_submissions', {
+      const url = state.ref
+        ? SUPABASE_URL + '/rest/v1/onboarding_submissions?on_conflict=ref_hash'
+        : SUPABASE_URL + '/rest/v1/onboarding_submissions';
+
+      const res = await fetch(url, {
         method: 'POST',
         headers,
         body: JSON.stringify(payload),
