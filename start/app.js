@@ -539,21 +539,14 @@
     };
 
     try {
-      /* If ref exists, update the pre-registered row; otherwise insert new */
-      const headers = {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Prefer': 'return=minimal,resolution=merge-duplicates',
-      };
-
-      const url = state.ref
-        ? SUPABASE_URL + '/rest/v1/onboarding_submissions?on_conflict=ref_hash'
-        : SUPABASE_URL + '/rest/v1/onboarding_submissions';
-
-      const res = await fetch(url, {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/onboarding_submissions', {
         method: 'POST',
-        headers,
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Prefer': 'return=minimal',
+        },
         body: JSON.stringify(payload),
       });
 
